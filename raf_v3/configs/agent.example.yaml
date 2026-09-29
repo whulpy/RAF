@@ -1,0 +1,31 @@
+# Paths refer to existing user-provided images and metadata, relative to this file.
+random_seed: 42
+sources:
+  - source_id: image-source-a
+    type: local_folder
+    root: ../../data/images
+    metadata_csv: ../../data/image_metadata.csv
+    path_column: path
+    id_column: id
+    cost: 1.0
+    seed: 43
+
+# Must match the encoder/preprocessing already used for the initial dataset.
+embedding:
+  type: clip
+  model: openai/clip-vit-base-patch32
+  batch_size: 16
+preprocessing:
+  size: [224, 224]
+  mode: center_crop
+labels:
+  type: source_metadata
+  required: [group]
+  mappings:
+    group: group
+alignment:
+  expected_model: openai/clip-vit-base-patch32
+  expected_dimension: 512
+  require_unit_norm: true
+runtime:
+  max_attempts_per_fetch: 12

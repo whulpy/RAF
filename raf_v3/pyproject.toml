@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "raf-clustering"
+version = "0.3.0"
+description = "Retrieval-based dataset assembly for fair clustering"
+readme = "README.md"
+requires-python = ">=3.11"
+license = {file = "LICENSE"}
+dependencies = [
+    "numpy>=1.24",
+    "pandas>=2.0",
+    "scikit-learn>=1.2",
+    "pyarrow>=12",
+    "hnswlib>=0.8",
+]
+
+[project.optional-dependencies]
+agent = ["Pillow>=10", "PyYAML>=6", "requests>=2.31"]
+clip = ["Pillow>=10", "PyYAML>=6", "requests>=2.31", "torch>=2.1", "transformers>=4.38"]
+
+[project.scripts]
+raf = "raf.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["raf", "raf.*", "raf_agent", "raf_agent.*"]
+
+[tool.setuptools]
+include-package-data = false

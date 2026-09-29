@@ -1,0 +1,14 @@
+{
+  "feature_col": "embedding",
+  "sensitive_col": "group",
+  "n_clusters": 10,
+  "random_state": 42,
+  "max_cost": 1000.0,
+  "max_steps": 20000,
+  "max_accepted": null,
+  "demand_decay_per_candidate": 0.2,
+  "hybrid_neighbor_k": 50,
+  "hnsw_single_index": false,
+  "raf_redundancy_elimination": true,
+  "raf_redundancy_exact_check": true
+}
